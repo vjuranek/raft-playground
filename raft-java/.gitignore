@@ -1,0 +1,12 @@
+*.class
+*.log
+
+# sbt
+dist/*
+target/
+
+# emacs
+*~
+
+# idea
+.idea/
