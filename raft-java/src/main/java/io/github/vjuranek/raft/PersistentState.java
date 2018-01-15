@@ -12,12 +12,12 @@ public class PersistentState<T> {
 
     private int currentTerm;
     private String votedFor;
-    private List<T> log;
+    private List<LogEntry<T>> log;
 
     public PersistentState() {
         this.currentTerm = 0;
         this.votedFor = null;
-        log = new ArrayList<T>();
+        log = new ArrayList<LogEntry<T>>();
     }
 
     public int getCurrentTerm() {
@@ -39,11 +39,11 @@ public class PersistentState<T> {
         this.votedFor = votedFor;
     }
 
-    public List<T> getLog() {
+    public List<LogEntry<T>> getLog() {
         return log;
     }
 
-    public void setLog(List<T> log) {
+    public void setLog(List<LogEntry<T>> log) {
         this.log = log;
     }
 }

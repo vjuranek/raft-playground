@@ -1,7 +1,5 @@
 package io.github.vjuranek.raft;
 
-import java.util.List;
-
 /**
  * // TODO: Document this
  *
@@ -12,22 +10,21 @@ public class AppendEntry<T> {
     private int term;
     private String leaderId;
     private int prevLogIndex;
-    private int precLogTerm;
+    private int prevLogTerm;
     private int leaderCommit;
-    private List<T> entries;
+    //private List<T> entries;
+    private T value; //TODO: list of entries should be supported for efficiency
 
-    public AppendEntry(int term, String leaderId, int prevLogIndex, int precLogTerm, int leaderCommit, List<T> entries) {
+    public AppendEntry(int term, String leaderId, int prevLogIndex, int precLogTerm, int leaderCommit, T value) {
         this.term = term;
         this.leaderId = leaderId;
         this.prevLogIndex = prevLogIndex;
-        this.precLogTerm = precLogTerm;
+        this.prevLogTerm = precLogTerm;
         this.leaderCommit = leaderCommit;
-        this.entries = entries;
+        this.value = value;
     }
 
-    public int getTerm() {
-        return term;
-    }
+    public int getTerm() { return term; }
 
     public void setTerm(int term) {
         this.term = term;
@@ -49,12 +46,12 @@ public class AppendEntry<T> {
         this.prevLogIndex = prevLogIndex;
     }
 
-    public int getPrecLogTerm() {
-        return precLogTerm;
+    public int getPrevLogTerm() {
+        return prevLogTerm;
     }
 
-    public void setPrecLogTerm(int precLogTerm) {
-        this.precLogTerm = precLogTerm;
+    public void setPrevLogTerm(int prevLogTerm) {
+        this.prevLogTerm = prevLogTerm;
     }
 
     public int getLeaderCommit() {
@@ -65,11 +62,11 @@ public class AppendEntry<T> {
         this.leaderCommit = leaderCommit;
     }
 
-    public List<T> getEntries() {
-        return entries;
+    public T getValue() {
+        return value;
     }
 
-    public void setEntries(List<T> entries) {
-        this.entries = entries;
+    public void setValue(T value) {
+        this.value = value;
     }
 }
